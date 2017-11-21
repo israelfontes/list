@@ -1,24 +1,24 @@
 
 template<typename T>
-sc::const_iterator<T>::const_iterator(){ /* Empty */ }
+sc::list<T>::const_iterator::const_iterator(){ /* Empty */ }
 
 template<typename T>
-const Object & sc::const_iterator<T>::operator*() const{ return *current; }
+const T & sc::list<T>::const_iterator::operator*() const{ return *current; }
 
 template<typename T>
-const_iterator & sc::const_iterator<T>::operator++(){ ++current; return *current; }
+typename sc::list<T>::const_iterator & sc::list<T>::const_iterator::operator++(){ ++current; return *current; }
 
 template<typename T>
-const_iterator sc::const_iterator<T>::operator++(int){ const_iterator temp(*this); operator++(); return temp; }
+typename sc::list<T>::const_iterator sc::list<T>::const_iterator::operator++(int){ const_iterator temp(*this); operator++(); return temp; }
 
 template<typename T>
-const_iterator & sc::const_iterator<T>::operator--(){ --current; return *this; }
+typename sc::list<T>::const_iterator & sc::list<T>::const_iterator::operator--(){ --current; return *this; }
 
 template<typename T>
-const_iterator & sc::const_iterator<T>::operator--(int){ iterator temp(*this); operator--(); return temp; }
+typename sc::list<T>::const_iterator & sc::list<T>::const_iterator::operator--(int){ iterator temp(*this); operator--(); return temp; }
 
 template<typename T>
-bool sc::const_iterator<T>::operator==(const const_iterator & rhs ) const{ return current==rhs.current; }
+bool sc::list<T>::const_iterator::operator==(const const_iterator & rhs ) const{ return current==rhs.current; }
 
 template<typename T>
-bool sc::const_iterator<T>::operator!=(const const_iterator & rhs ) const{ return current!=rhs.current; }
+bool sc::list<T>::const_iterator::operator!=(const const_iterator & rhs ) const{ return current!=rhs.current; }
