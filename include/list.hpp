@@ -23,7 +23,7 @@ namespace sc{
 
 			public:
 				const_iterator();
-				const T & operator*() const;
+				const Node * operator*() const;
 				const_iterator & operator++();
 				const_iterator operator++(int);
 				const_iterator & operator--();
@@ -35,14 +35,12 @@ namespace sc{
 		class iterator : public const_iterator{
 			public:
 				iterator(): const_iterator(){}
-				const T& operator*() const;
+				Node * operator*() const;
 				iterator & operator++();
 				iterator operator++(int);
 				iterator & operator--();
 				iterator operator--(int);
-				bool operator!=( const iterator & rhs );
-				bool operator==( const iterator & rhs );
-			
+
 			protected:
 				iterator(Node *p): const_iterator(p){}
 				friend class list<T>;
@@ -57,7 +55,7 @@ namespace sc{
 			list();
 			~list();
 			explicit list ( size_t count );
-			list( const list & other);
+			explicit list( const list & other);
 			list &operator=( const list & other );
 
 			iterator begin();
@@ -77,6 +75,14 @@ namespace sc{
 			void push_back( const T & value );
 			void pop_front();
 			void pop_back();
+			void assign( const T & value );
+
+			void assign( iterator first, iterator last);
+			iterator insert( const_iterator itr, const T & value );
+			iterator erase( const_iterator itr);
+			iterator erase( iterator first, iterator last );
+			const_iterator find( const T & value );	
+
 
 	};
 }
