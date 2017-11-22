@@ -16,8 +16,13 @@ int main(void){
 	list<string> out;
 	
 	out = in;
-	out.assign("55555");
-	//cout << (*out.erase( ++out.cbegin() ))->data << endl;
+	out.push_back("iwiw");
+	if( out != in ) {
+		cout << "out != in" << endl;
+	}else { cout << "out == in" << endl; }
+	
+	//out.assign("55555");
+	//cout << (*out.erase( ++out.cbegin(), out.cend() ))->data << endl;
 	for( auto it = out.begin(); it != out.end(); ++it){
 		cout << (*it)->data << endl;
 	}

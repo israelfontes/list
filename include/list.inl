@@ -24,7 +24,7 @@ sc::list<T>::list( const list & other ){
 	m_tail->next = nullptr;	
 	m_head->next = m_tail;
 	m_tail->prev = m_head;
-	m_size = 0;
+	m_size = other.size();
 	for(const_iterator it = other.cbegin(); it != other.cend(); ++it) { push_front( (*it)->data );}
 }
 
@@ -32,6 +32,7 @@ template <typename T>
 typename sc::list<T> & sc::list<T>::operator=( const list & other ){ 
 	clear();
 	for(const_iterator it = other.cbegin(); it != other.cend(); ++it) { push_front( (*it)->data );}
+	this->m_size = other.size();
 	return *this; 
 }
 
@@ -155,6 +156,18 @@ typename sc::list<T>::iterator sc::list<T>::erase( const_iterator itr ){
 }
 
 template <typename T>
+typename sc::list<T>::const_iterator sc::list<T>::erase( const_iterator first, const_iterator last ){
+	size_t new_size = 0;
+	while(first != last){
+		erase(first);
+		++first;
+		++new_size;
+	}
+	m_size = m_size - new_size;
+	return last;
+}
+
+template <typename T>
 typename sc::list<T>::const_iterator sc::list<T>::find( const T & value ){
 	for(const_iterator it = this->cbegin(); it != this->cend(); ++it){
 		if( (*it)->data == value ) return it;
@@ -162,3 +175,28 @@ typename sc::list<T>::const_iterator sc::list<T>::find( const T & value ){
 	return nullptr;
 }
 
+template <typename T>
+bool sc::list<T>::operator==( const list & other ){
+	if(other.size() != this->size()) return false;
+
+	const_iterator it_this = this->cbegin();
+	for( const_iterator it = other.cbegin(); it != other.cend(); ++it ){
+		if( (*it_this)->data !=  (*it)->data) return false;
+		++it_this;
+	}
+
+	return true;
+}
+
+template <typename T>
+bool sc::list<T>::operator!=( const list & other ){
+	if(other.size() != this->size()) return true;
+
+	const_iterator it_this = this->cbegin();
+	for( const_iterator it = other.cbegin(); it != other.cend(); ++it ){
+		if( (*it_this)->data !=  (*it)->data) return true;
+		++it_this;
+	}
+
+	return false;
+}

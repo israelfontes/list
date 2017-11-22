@@ -1,3 +1,10 @@
+/**
+* @file     list.hpp
+* @brief    Header list
+* @author   Israel Medeiros Fontes
+* @since    16/11/2017
+* @date     22/11/2017
+*/
 #ifndef _LIST_HPP_
 #define _LIST_HPP_
 #include <iostream>
@@ -80,10 +87,11 @@ namespace sc{
 			void assign( iterator first, iterator last);
 			iterator insert( const_iterator itr, const T & value );
 			iterator erase( const_iterator itr);
-			iterator erase( iterator first, iterator last );
+			const_iterator erase( const_iterator first, const_iterator last );
 			const_iterator find( const T & value );	
 
-
+			bool operator==( const list & other );
+			bool operator!=( const list & other );
 	};
 }
 
