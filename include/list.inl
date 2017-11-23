@@ -1,3 +1,11 @@
+/**
+* @file     list.inl
+* @brief    Implementação do list.
+* @author   Israel Medeiros Fontes
+* @since    16/11/2017
+* @date     22/11/2017
+*/
+
 template <typename T>
 sc::list<T>::list(){ 
 	m_head = new Node();
@@ -14,6 +22,17 @@ sc::list<T>::~list(){
 	this->clear();
 	delete this->m_head;
 	delete this->m_tail;
+}
+
+template <typename T>
+sc::list<T>::list( size_t count ){
+	m_head = new Node();
+	m_tail = new Node();
+	m_head->prev = nullptr;
+	m_tail->next = nullptr;	
+	m_head->next = m_tail;
+	m_tail->prev = m_head;
+	for(size_t i = 0; i < count; ++i) push_back("");
 }
 
 template <typename T>

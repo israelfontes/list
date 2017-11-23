@@ -1,4 +1,10 @@
-
+/**
+* @file     iterator.inl
+* @brief    Implementação do iterator.
+* @author   Israel Medeiros Fontes
+* @since    16/11/2017
+* @date     22/11/2017
+*/
 
 template<typename T>
 typename sc::list<T>::Node * sc::list<T>::iterator::operator*() const{ return this->current; }

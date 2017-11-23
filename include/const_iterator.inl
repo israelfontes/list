@@ -1,3 +1,10 @@
+/**
+* @file     const_iterator.inl
+* @brief    Implementação do const_iterator.
+* @author   Israel Medeiros Fontes
+* @since    16/11/2017
+* @date     22/11/2017
+*/
 
 template<typename T>
 sc::list<T>::const_iterator::const_iterator(){ /* Empty */ }
