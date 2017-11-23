@@ -135,10 +135,6 @@ void sc::list<T>::assign( const T & value ){
 		(*it)->data = value;
 }
 
-template <typename T>
-void sc::list<T>::assign( iterator first, iterator last ){
-
-}
 
 template <typename T>
 typename sc::list<T>::iterator sc::list<T>::insert( const_iterator itr, const T & value ){
