@@ -32,7 +32,8 @@ sc::list<T>::list( size_t count ){
 	m_tail->next = nullptr;	
 	m_head->next = m_tail;
 	m_tail->prev = m_head;
-	for(size_t i = 0; i < count; ++i) push_back("");
+	T *t = new T();
+	for(size_t i = 0; i < count; ++i) push_back(*t);
 }
 
 template <typename T>
@@ -131,10 +132,9 @@ void sc::list<T>::pop_back(){
 
 template <typename T>
 void sc::list<T>::assign( const T & value ){
-	for(iterator it = begin(); it != end(); ++it)
+	for(iterator it = begin(); it != ++end(); ++it)
 		(*it)->data = value;
 }
-
 
 template <typename T>
 typename sc::list<T>::iterator sc::list<T>::insert( const_iterator itr, const T & value ){
@@ -172,14 +172,8 @@ typename sc::list<T>::iterator sc::list<T>::erase( const_iterator itr ){
 
 template <typename T>
 typename sc::list<T>::const_iterator sc::list<T>::erase( const_iterator first, const_iterator last ){
-	size_t new_size = 0;
-	while(first != last){
-		erase(first);
-		++first;
-		++new_size;
-	}
-	m_size = m_size - new_size;
-	return last;
+	while(first != last) first = erase(first);
+	return first;
 }
 
 template <typename T>
