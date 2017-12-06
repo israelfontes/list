@@ -93,7 +93,7 @@ template <typename T>
 const T & sc::list<T>::back() const{ return (m_head->next)->data; }
 
 template <typename T>
-void sc::list<T>::push_front( const T & value ){ 
+void sc::list<T>::push_back( const T & value ){ 
 	Node * tmp = m_tail->prev;
 	tmp->next = new Node( value, tmp, m_tail );
 	m_tail->prev = tmp->next;
@@ -101,7 +101,7 @@ void sc::list<T>::push_front( const T & value ){
 }
 
 template <typename T>
-void sc::list<T>::push_back( const T& value ){
+void sc::list<T>::push_front( const T& value ){
 	Node * tmp = m_head->next;
 	tmp->prev = new Node( value, m_head, tmp );
 	m_head->next = tmp->prev;
@@ -109,7 +109,7 @@ void sc::list<T>::push_back( const T& value ){
 }
 
 template <typename T>
-void sc::list<T>::pop_front(){
+void sc::list<T>::pop_back(){
 	if(!empty()){
 		Node * tmp = m_tail->prev;
 		(tmp->prev)->next = m_tail;
@@ -120,7 +120,7 @@ void sc::list<T>::pop_front(){
 }
 
 template <typename T>
-void sc::list<T>::pop_back(){
+void sc::list<T>::pop_front(){
 	if(!empty()){
 		Node * tmp = m_head->next;
 		(tmp->next)->prev = m_head;
